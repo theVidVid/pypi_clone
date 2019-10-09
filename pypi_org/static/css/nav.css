@@ -33,13 +33,13 @@
 }
 
 .navbar {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 
 .navbar-brand img {
     width: 65px;
-    margin-left: 60px;
+    margin-left: 15px;
 }
 
 .navbar-inverse .navbar-toggle {
@@ -48,6 +48,7 @@
 
 .navbar-nav li {
     margin-top: 20px;
+    min-width: 75px;
 }
 
 #last_nav_link {
@@ -56,7 +57,7 @@
 
 nav {
     padding: 10px;
-    font-size: 17px;
+    font-size: 16px;
     color: white;
     height: 85px;
     background-color: #0073b7;
