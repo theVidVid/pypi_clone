@@ -5,7 +5,7 @@ app = flask.Flask(__name__)
 
 def main():
     register_blueprints()
-    app.run()
+    app.run(debug=True)
 
 
 def register_blueprints():

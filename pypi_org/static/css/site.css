@@ -15,13 +15,39 @@ body {
 }
 
 nav {
-    background-color: #000;
+    background-color: #0073b7;
     padding: 10px;
     font-size: 20px;
     color: white;
+    height: 65px;
 }
 
 nav > a {
     color: white;
     margin-right: 10px;
+}
+
+.hero {
+    background-color: #0073b7;
+    color: white;
+    font-size: 14px;
+    padding: 50px 0px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero a {
+    color: white;
+    text-decoration: underline;
+}
+
+.hero-inner {
+    max-width:  500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
 }
