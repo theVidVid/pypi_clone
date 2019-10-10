@@ -1,10 +1,12 @@
 import sqlalchemy as sa
 
+from pypi_org.data.modelbase import SqlAlchemyBase
 
-class Package:
+
+class Package(SqlAlchemyBase):
     """Class representing Packages from Pypi.org"""
 
-    # Database table name will be packages instead of Package
+    # Database table name will be packages instead of class name 'Package'
     __tablename__ = 'packages'
 
     id = sa.Column(sa.String, primary_key=True)
