@@ -1,5 +1,6 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
+from pypi_org.data.modelbase import SqlAlchemyBase
 
 factory = None
 
@@ -16,5 +17,7 @@ def global_init(db_file: str):
     conn_str = 'sqlite:///' + db_file.strip()
 
     engine = sa.create_engine(conn_str, echo=False)
-
     factory = orm.sessionmaker(bind=engine)
+
+    from pypi_org.data.package import Package
+    SqlAlchemyBase.metadata.create_all(engine)
