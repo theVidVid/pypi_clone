@@ -15,9 +15,12 @@ def global_init(db_file: str):
         raise Exception("You must specify a db file.")
 
     conn_str = 'sqlite:///' + db_file.strip()
+    print(f"Connecting to DB with {conn_str}")
 
     engine = sa.create_engine(conn_str, echo=False)
     factory = orm.sessionmaker(bind=engine)
 
-    from pypi_org.data.package import Package
+    # noinspection PyUnResolvedReferences
+    import pypi_org.data.__all_models
+
     SqlAlchemyBase.metadata.create_all(engine)
