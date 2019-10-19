@@ -1,7 +1,5 @@
 import datetime
-
 import sqlalchemy as sa
-
 from pypi_org.data.modelbase import SqlAlchemyBase
 
 
