@@ -6,6 +6,7 @@ from pypi_org.data.modelbase import SqlAlchemyBase
 class Download(SqlAlchemyBase):
     """A class representing a downloaded package."""
     __tablename__ = 'downloads'
+    __table_args__ = {'extend_existing': True}
 
     id = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
     created_date = sa.Column(sa.DateTime, default=datetime.datetime.now,

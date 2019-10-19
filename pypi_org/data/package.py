@@ -11,6 +11,7 @@ class Package(SqlAlchemyBase):
 
     # Database table name will be packages instead of class name 'Package'
     __tablename__ = 'packages'
+    __table_args__ = {'extend_existing': True}
 
     id = sa.Column(sa.String, primary_key=True)
     created_date = sa.Column(sa.DATETIME, default=datetime.datetime.now,

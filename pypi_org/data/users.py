@@ -6,6 +6,7 @@ from pypi_org.data.modelbase import SqlAlchemyBase
 class User(SqlAlchemyBase):
     """A class representing a particular user of Pypi clone website."""
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String, nullable=True)

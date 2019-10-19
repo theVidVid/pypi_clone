@@ -7,6 +7,7 @@ from pypi_org.data.modelbase import SqlAlchemyBase
 class Release(SqlAlchemyBase):
     """A class representing a particular release of a given package."""
     __tablename__ = 'releases'
+    __table_args__ = {'extend_existing': True}
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
 
@@ -14,7 +15,7 @@ class Release(SqlAlchemyBase):
     minor_ver = sa.Column(sa.BigInteger, index=True)
     build_ver = sa.Column(sa.BigInteger, index=True)
 
-    created_date = sa.Column(sa.DateTime,default=datetime.datetime.now,
+    created_date = sa.Column(sa.DateTime, default=datetime.datetime.now,
                              index=True)
     comment = sa.Column(sa.String)
     url = sa.Column(sa.String)
