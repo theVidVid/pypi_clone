@@ -1,5 +1,5 @@
 import datetime
-import sqlalchemy
+import sqlalchemy as sa
 from pypi_org.data.modelbase import SqlAlchemyBase
 
 
@@ -7,13 +7,12 @@ class Download(SqlAlchemyBase):
     """A class representing a downloaded package."""
     __tablename__ = 'downloads'
 
-    id = sqlalchemy.Column(sqlalchemy.BigInteger, primary_key=True,
-                           autoincrement=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
-                                     default=datetime.datetime.now, index=True)
+    id = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
+    created_date = sa.Column(sa.DateTime, default=datetime.datetime.now,
+                             index=True)
 
-    package_id = sqlalchemy.Column(sqlalchemy.String, index=True)
-    release_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    package_id = sa.Column(sa.String, index=True)
+    release_id = sa.Column(sa.BigInteger, index=True)
 
-    ip_address = sqlalchemy.Column(sqlalchemy.String)
-    user_agent = sqlalchemy.Column(sqlalchemy.String)
+    ip_address = sa.Column(sa.String)
+    user_agent = sa.Column(sa.String)

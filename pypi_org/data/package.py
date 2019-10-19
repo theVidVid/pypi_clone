@@ -1,5 +1,8 @@
 import datetime
 import sqlalchemy as sa
+import sqlalchemy.orm as orm
+
+from data.releases import Release
 from pypi_org.data.modelbase import SqlAlchemyBase
 
 
@@ -24,8 +27,14 @@ class Package(SqlAlchemyBase):
 
     license = sa.Column(sa.String, index=True)
 
+    # DB relationship of releases
+    releases = orm.relation("Release", order_by=[
+        Release.major_ver.desc(),
+        Release.minor_ver.desc(),
+        Release.build_ver.desc(),
+    ], back_populates='package')
+
     # maintainers
-    # releases
 
     def __repr__(self):
         return f'<Package {self.id}>'

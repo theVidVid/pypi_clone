@@ -1,5 +1,6 @@
 import datetime
-import sqlalchemy
+import sqlalchemy as sa
+import sqlalchemy.orm as orm
 from pypi_org.data.modelbase import SqlAlchemyBase
 
 
@@ -7,21 +8,21 @@ class Release(SqlAlchemyBase):
     """A class representing a particular release of a given package."""
     __tablename__ = 'releases'
 
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True,
-                           autoincrement=True)
+    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
 
-    major_ver = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    minor_ver = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    build_ver = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    major_ver = sa.Column(sa.BigInteger, index=True)
+    minor_ver = sa.Column(sa.BigInteger, index=True)
+    build_ver = sa.Column(sa.BigInteger, index=True)
 
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
-                                     default=datetime.datetime.now, index=True)
-    comment = sqlalchemy.Column(sqlalchemy.String)
-    url = sqlalchemy.Column(sqlalchemy.String)
-    size = sqlalchemy.Column(sqlalchemy.BigInteger)
+    created_date = sa.Column(sa.DateTime,default=datetime.datetime.now,
+                             index=True)
+    comment = sa.Column(sa.String)
+    url = sa.Column(sa.String)
+    size = sa.Column(sa.BigInteger)
 
     # Package relationship
-    # ...
+    package_id = sa.Column(sa.String, sa.ForeignKey("packages.id"))
+    package = orm.relation('Package')
 
     @property
     def version_text(self):

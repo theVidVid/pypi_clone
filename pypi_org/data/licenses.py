@@ -1,5 +1,5 @@
 import datetime
-import sqlalchemy
+import sqlalchemy as sa
 from pypi_org.data.modelbase import SqlAlchemyBase
 
 
@@ -7,7 +7,7 @@ class License(SqlAlchemyBase):
     """A class representing a particular software license."""
     __tablename__ = 'licenses'
 
-    id = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
-                                     default=datetime.datetime.now, index=True)
-    description = sqlalchemy.Column(sqlalchemy.String)
+    id = sa.Column(sa.String, primary_key=True)
+    created_date = sa.Column(sa.DateTime, default=datetime.datetime.now,
+                             index=True)
+    description = sa.Column(sa.String)
