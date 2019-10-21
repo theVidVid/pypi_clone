@@ -1,14 +1,16 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
+from sqlalchemy.orm import Session
 from pypi_org.data.modelbase import SqlAlchemyBase
 
-factory = None
+
+__factory = None
 
 
 def global_init(db_file: str):
-    global factory
+    global __factory
 
-    if factory:
+    if __factory:
         return
 
     if not db_file or not db_file.strip():
@@ -18,9 +20,14 @@ def global_init(db_file: str):
     print(f"Connecting to DB with {conn_str}")
 
     engine = sa.create_engine(conn_str, echo=False)
-    factory = orm.sessionmaker(bind=engine)
+    __factory = orm.sessionmaker(bind=engine)
 
     # noinspection PyUnResolvedReferences
     import pypi_org.data.__all_models
 
     SqlAlchemyBase.metadata.create_all(engine)
+
+
+def create_session() -> Session:
+    global __factory
+    return __factory()

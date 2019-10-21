@@ -2,8 +2,8 @@ import datetime
 from typing import List
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
-from data.releases import Release
 from pypi_org.data.modelbase import SqlAlchemyBase
+from pypi_org.data.releases import Release
 
 
 class Package(SqlAlchemyBase):

@@ -1,7 +1,13 @@
 import os
+import sys
 import pypi_org.data.db_session as db_session
-from pypi_org.data.releases import Release
 from pypi_org.data.package import Package
+from pypi_org.data.releases import Release
+
+
+# Make script run more easily outside of Pycharm
+sys.path.insert(0, os.path.abspath(os.path.join(
+    os.path.dirname(__file__), "..", "..")))
 
 
 def main():
@@ -34,11 +40,8 @@ def insert_a_package():
     r.size = int(input('Size in bytes: '))
     p.releases.append(r)
 
-    import sqlalchemy.orm
-    session: sqlalchemy.orm.Session = db_session.factory()
-
+    session = db_session.create_session()
     session.add(p)
-
     session.commit()
 
 
