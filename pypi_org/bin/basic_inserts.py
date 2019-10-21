@@ -1,9 +1,21 @@
 import os
 import pypi_org.data.db_session as db_session
+from pypi_org.data.package import Package
 
 
 def main():
     init_db()
+    while True:
+        insert_a_package()
+
+
+def insert_a_package():
+    p = Package()
+    p.id = input('Package id / name: ').strip().lower()
+
+    p.summary = input('Package summary: ').strip()
+    p.author_name = input('Author: ').strip()
+    p.license = input('License: ').strip()
 
 
 def init_db():
