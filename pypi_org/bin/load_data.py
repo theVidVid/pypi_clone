@@ -141,9 +141,9 @@ def do_import_packages(file_data: List[dict], user_lookup: Dict[str, User]):
                 load_package(p, user_lookup)
                 bar.update(idx)
             except Exception as x:
-                errored_packages.append((
-                    p, " *** Errored out for package {}, {}".format(
-                        p.get('package_name'), x)))
+                errored_packages.append(
+                    (p, " *** Errored out for package {}, {}"
+                     .format(p.get('package_name'), x)))
                 raise
     sys.stderr.flush()
     sys.stdout.flush()
@@ -181,12 +181,10 @@ def find_users(data: List[dict]) -> dict:
     with progressbar.ProgressBar(max_value=len(data)) as bar:
         for idx, p in enumerate(data):
             info = p.get('info')
-            found_users.update(
-                get_email_and_name_from_text(info.get('author'),
-                                             info.get('author_email')))
-            found_users.update(
-                get_email_and_name_from_text(info.get('maintainer'),
-                                             info.get('maintainer_email')))
+            found_users.update(get_email_and_name_from_text(
+                info.get('author'), info.get('author_email')))
+            found_users.update(get_email_and_name_from_text(
+                info.get('maintainer'), info.get('maintainer_email')))
             bar.update(idx)
 
     sys.stderr.flush()
