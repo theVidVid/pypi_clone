@@ -1,0 +1,23 @@
+{% extends "shared/_layout.html" %}
+
+{% block additional_css %}
+  <link rel="stylesheet" href="/static/css/package.css">
+{% endblock %}
+
+{% block main_content %}
+  <div class="content details">
+    <div class="hero">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-8">
+        <h1>
+          {{ package.id }} {{ latest_version }}
+        </h1>
+
+        <div class="install sub-hero">
+          pip install
+          {{ pacakge.id }}{% if not is_lastest %}<span>=={{ release_version }}</span>{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
