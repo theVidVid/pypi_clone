@@ -16,7 +16,7 @@ def package_details(package_name: str):
     if not package:
         return flask.abort(status=404)
 
-    return "Package details for {}".format(package_name)
+    return "Package details for {}".format(package.id)
 
 
 @blueprint.route('/<int:rank>')

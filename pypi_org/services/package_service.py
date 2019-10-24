@@ -30,8 +30,14 @@ def get_release_count() -> int:
 
 
 def get_package_by_id(package_id: str) -> Optional[Package]:
+    if not package_id:
+        return None
+
+    package_id = package_id.strip().lower()
     session = db_session.create_session()
-    package = session.query(Package).filter(Package.id == package_id)
+    package = session.query(Package).\
+        filter(Package.id == package_id).\
+        first()
     session.close()
 
     return package
