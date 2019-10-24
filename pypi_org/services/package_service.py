@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import sqlalchemy.orm
 import pypi_org.data.db_session as db_session
 from pypi_org.data.package import Package
@@ -27,3 +27,11 @@ def get_package_count() -> int:
 def get_release_count() -> int:
     session = db_session.create_session()
     return session.query(Release).count()
+
+
+def get_package_by_id(package_id: str) -> Optional[Package]:
+    session = db_session.create_session()
+    package = session.query(Package).filter(Package.id == package_id)
+    session.close()
+
+    return package
