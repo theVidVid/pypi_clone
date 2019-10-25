@@ -22,30 +22,30 @@
 
           </div>
 
-          <div class="col-sm-2 active-release">
+        <div class="col-sm-2 active-release">
 
-            {% if is_latest %}
-              <div class="go-latest-button">
-                Latest version
-              </div>
-            {% else %}
-              <div class="go-older-button">
-                <a href="/project/{{ package.id }}">
-                  Newer version available
-                </a>
-              </div>
+          {% if is_latest %}
+            <div class="go-latest-button">
+              Latest version
+            </div>
+          {% else %}
+            <div class="go-older-button">
+              <a href="/project/{{ package.id }}">
+                Newer version available
+              </a>
+            </div>
+          {% endif %}
+
+          <div class="latest-release-date">
+
+            Last release:
+            {% if latest_release %}
+              <span>{{ latest_release.created_date.date().isoformat() }}</span>
             {% endif %}
 
-            <div class="latest-release-date">
-
-              Last release:
-              {% if latest_release %}
-                <span>{{ latest_release.created_date.date().isoformat() }}</span>
-              {% endif %}
-
-            </div>
           </div>
         </div>
+      </div>
     </div>
 
     <div class="row pypi-stats">
@@ -119,6 +119,7 @@
         <div class="col-sm-1"></div>
       </div>
     </div>
+
   </div>
 
 {% endblock %}

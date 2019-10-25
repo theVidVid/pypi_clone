@@ -1,3 +1,4 @@
+
 .navbar {
     border-radius: 0px;
     padding-bottom: 10px;
@@ -33,13 +34,13 @@
 }
 
 .navbar {
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 
 .navbar-brand img {
     width: 65px;
-    margin-left: 15px;
+    margin-left: 60px;
 }
 
 .navbar-inverse .navbar-toggle {
@@ -48,7 +49,6 @@
 
 .navbar-nav li {
     margin-top: 20px;
-    min-width: 75px;
 }
 
 #last_nav_link {
@@ -57,7 +57,7 @@
 
 nav {
     padding: 10px;
-    font-size: 16px;
+    font-size: 17px;
     color: white;
     height: 85px;
     background-color: #0073b7;

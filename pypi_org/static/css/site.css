@@ -1,7 +1,7 @@
 body {
     color: #222;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
     font-size: 17px;
     background-color: #006dad;
@@ -9,24 +9,23 @@ body {
 
 .main_content {
     background: #fff;
-    margin: 0;
-    padding: 0 0 50px;
+    margin: 0px;
+    padding: 0px 0px 50px;
 }
 
 
 .hero {
     background-color: #0073b7;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
 
-    padding: 50px 0;
+    padding: 50px 0px;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 39px;
-    font-weight: 600;
-    margin-bottom: 40px;
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
 .hero a {
@@ -35,7 +34,7 @@ body {
 }
 
 .hero-inner {
-    max-width: 600px;
+    max-width: 550px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
@@ -45,7 +44,7 @@ body {
     display: inline-block;
     border-radius: 2px;
     font-size: 20px;
-    padding: 25px;
+    padding: 20px;
 }
 
 .pypi-stats {
@@ -61,7 +60,7 @@ body {
     display: inline-block;
     min-width: 170px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
     color: #003d61;
 }
 
