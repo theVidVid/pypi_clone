@@ -3,6 +3,8 @@
 # it is needed to preload the models and ensure that they are all loaded.
 
 # noinspection PyUnResolvedReferences
+import pypi_org.data.audit
+# noinspection PyUnResolvedReferences
 import pypi_org.data.downloads
 # noinspection PyUnResolvedReferences
 import pypi_org.data.languages
