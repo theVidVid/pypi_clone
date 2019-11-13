@@ -30,7 +30,7 @@ from pypi_org.data.modelbase import SqlAlchemyBase
 # noinspection PyUnresolvedReferences
 import pypi_org.data.__all_models
 
-target_metadata = SqlAlchemyBase.metadata
+target_metadata = pypi_org.data.modelbase.SqlAlchemyBase.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
