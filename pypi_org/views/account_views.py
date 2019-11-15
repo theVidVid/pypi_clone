@@ -42,6 +42,14 @@ def register_post():
 
     # TODO: Create the user
     user = user_service.create_user(name, email, password)
+    if not user:
+        return {
+            'name': name,
+            'email': email,
+            'password': password,
+            'error': "A user with that email already exists.",
+        }
+
     # TODO: Log in browser as a session
 
     return flask.redirect('/account')
