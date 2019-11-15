@@ -31,7 +31,13 @@ def register_post():
     email = r.form.get('email', '').lower().strip()
     password = r.form.get('password', '').strip()
 
-    print(name, email, password)
+    if not name or not email or not password:
+        return {
+            'name': name,
+            'email': email,
+            'password': password,
+            'error': "Some required fields are missing."
+        }
 
     return {}
 
