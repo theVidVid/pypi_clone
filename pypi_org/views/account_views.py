@@ -36,10 +36,13 @@ def register_post():
             'name': name,
             'email': email,
             'password': password,
-            'error': "Some required fields are missing."
+            'error': "Some required fields are missing.",
         }
 
-    return {}
+    # TODO: Create the user
+    # TODO: Log in browser as a session
+
+    return flask.redirect('/account')
 
 
 # ###################### LOGIN #######################################
