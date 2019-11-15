@@ -10,7 +10,16 @@ def get_user_count() -> int:
     return session.query(User).count()
 
 
+def find_user_by_email(email: str) -> Optional[User]:
+    """Check to see if anyone else is registered with the same email."""
+    session = db_session.create_session()
+    return session.query(User).filter(User.email == email).first()
+
+
 def create_user(name: str, email: str, password: str) -> Optional[User]:
+    if find_user_by_email(email):
+        return None
+
     user = User()
     user.email = email
     user.name = name
