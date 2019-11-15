@@ -1,6 +1,7 @@
 import flask
 
 from pypi_org.infrastructure.view_modifiers import response
+from services import user_service
 
 blueprint = flask.Blueprint('account', __name__, template_folder='templates')
 
@@ -40,6 +41,7 @@ def register_post():
         }
 
     # TODO: Create the user
+    user = user_service.create_user(name, email, password)
     # TODO: Log in browser as a session
 
     return flask.redirect('/account')

@@ -6,6 +6,7 @@
   <div class="form-container">
     <form action="" method="POST" class="account-form">
       <h1>Register at PyPI</h1>
+      {# value stores the input so it doesn't get deleted if form validation fails #}
       <input name="name" type="text" placeholder="Your name" class="form-control" value="{{ name }}">
       <input name="email" type="text" placeholder="Your email address" class="form-control" value="{{ email }}">
       <input name="password" type="password" placeholder="Password" class="form-control" value="{{ password }}">

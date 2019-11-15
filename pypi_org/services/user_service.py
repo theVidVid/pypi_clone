@@ -1,3 +1,6 @@
+from typing import Optional
+
+from passlib.handlers.sha2_crypt import sha512_crypt as crypto
 import pypi_org.data.db_session as db_session
 from pypi_org.data.users import User
 
@@ -5,3 +8,21 @@ from pypi_org.data.users import User
 def get_user_count() -> int:
     session = db_session.create_session()
     return session.query(User).count()
+
+
+def create_user(name: str, email: str, password: str) -> Optional[User]:
+    user = User()
+    user.email = email
+    user.name = name
+    user.password = hash_text(password)
+
+    return None
+
+
+def hash_text(text: str) -> bool:
+    hashed_text = crypto.encrypt(text, rounds=171204)
+    return hashed_text
+
+
+def verify_hash(hashed_text: str, plain_text: str) -> bool:
+    return crypto.verify(plain_text, hashed_text)
