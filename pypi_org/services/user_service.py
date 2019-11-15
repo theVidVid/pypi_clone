@@ -16,7 +16,10 @@ def create_user(name: str, email: str, password: str) -> Optional[User]:
     user.name = name
     user.password = hash_text(password)
 
-    return None
+    session = db_session.create_session()
+    session.add(user)
+    session.commit()
+    return user
 
 
 def hash_text(text: str) -> bool:
