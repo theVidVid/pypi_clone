@@ -2,11 +2,22 @@
 {% block title %}Register{% endblock %}
 
 {% block main_content %}
-  <h1>Registration Page</h1>
 
-  <div>
-    This page will have a registration form.
-  </div>
+  <form action="" method="POST">
+    <h1>Register at PyPI</h1>
+
+    <label>
+      <input type="text" placeholder="Your name">
+    </label>
+    <label>
+      <input type="text" placeholder="Your email address">
+    </label>
+    <label>
+      <input type="password" placeholder="Password">
+    </label>
+    <button type="submit">Register</button>
+  </form>
+
 {% endblock %}
 
 {% block additional_css %}
