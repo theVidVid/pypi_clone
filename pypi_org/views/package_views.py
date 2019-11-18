@@ -1,5 +1,6 @@
 import flask
 
+from infrastructure import cookie_auth
 from pypi_org.infrastructure.view_modifiers import response
 import pypi_org.services.package_service as package_service
 
@@ -25,14 +26,16 @@ def package_details(package_name: str):
         latest_version = latest_release.version_text
 
     return {
-       'package': package,
-       'latest_version': latest_version,
-       'latest_release': latest_release,
-       'release_version': latest_release,
-       'is_latest': is_latest,
+        'package': package,
+        'latest_version': latest_version,
+        'latest_release': latest_release,
+        'release_version': latest_release,
+        'is_latest': is_latest,
+        'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
     }
 
 
 @blueprint.route('/<int:rank>')
 def popular(rank: int):
+    print(type(rank), rank)
     return "The details for the {}th most popular package".format(rank)
