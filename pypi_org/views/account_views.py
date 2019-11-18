@@ -1,7 +1,8 @@
 import flask
 
 from pypi_org.infrastructure.view_modifiers import response
-from services import user_service
+from pypi_org.services import user_service
+from pypi_org.infrastructure import cookie_auth
 
 blueprint = flask.Blueprint('account', __name__, template_folder='templates')
 
@@ -50,8 +51,10 @@ def register_post():
         }
 
     # TODO: Log in browser as a session
+    resp = flask.redirect('/account')
+    cookie_auth.set_auth(resp, user.id)
 
-    return flask.redirect('/account')
+    return resp
 
 
 # ###################### LOGIN #######################################
@@ -87,12 +90,17 @@ def login_post():
         }
 
     # TODO: Log in browser as a session
+    resp = flask.redirect('/account')
+    cookie_auth.set_auth(resp, user.id)
 
-    return flask.redirect('/account')
+    return resp
 
 
 # ####################### LOGOUT #####################################
 
 @blueprint.route('/account/logout')
 def logout():
-    return {}
+    resp = flask.redirect('/')
+    cookie_auth.logout(resp)
+
+    return resp
