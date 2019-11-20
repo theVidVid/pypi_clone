@@ -39,11 +39,11 @@ def register_get():
 @blueprint.route('/account/register', methods=['POST'])
 @response(template_file='account/register.html')
 def register_post():
-    r = flask.request
+    data = request_dict.create(default_val='')
 
-    name = r.form.get('name')
-    email = r.form.get('email', '').lower().strip()
-    password = r.form.get('password', '').strip()
+    name = data.name
+    email = data.email.lower().strip()
+    password = data.password.strip()
 
     if not name or not email or not password:
         return {
@@ -83,7 +83,7 @@ def login_get():
 @blueprint.route('/account/login', methods=['POST'])
 @response(template_file='account/login.html')
 def login_post():
-    data = request_dict.create()
+    data = request_dict.create(default_val='')
 
     email = data.email.lower().strip()
     password = data.password.strip()
