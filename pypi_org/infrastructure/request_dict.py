@@ -8,6 +8,7 @@ class RequestDictionary(dict):
 
 
 def create(**route_args) -> RequestDictionary:
+    """Unifies where all the data comes from."""
     request = flask.request
     data = {
         **request.args,  # The key/value pairs in the URL query string

@@ -1,6 +1,6 @@
 import flask
 
-from infrastructure import request_dict
+from pypi_org.infrastructure import request_dict
 from pypi_org.infrastructure.view_modifiers import response
 from pypi_org.services import user_service
 from pypi_org.infrastructure import cookie_auth
