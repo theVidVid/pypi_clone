@@ -1,3 +1,4 @@
+import flask
 from flask import Request
 
 
@@ -6,7 +7,8 @@ class RequestDictionary(dict):
         return self.get(key)
 
 
-def create(request: Request, **route_args) -> RequestDictionary:
+def create(**route_args) -> RequestDictionary:
+    request = flask.request
     data = {
         **request.args,  # The key/value pairs in the URL query string
         **request.headers,  # Header values
