@@ -35,26 +35,15 @@ def register_get():
 @response(template_file='account/register.html')
 def register_post():
     vm = RegisterViewModel()
+    vm.validate()
 
-    if not name or not email or not password:
-        return {
-            'name': name,
-            'email': email,
-            'password': password,
-            'error': "Some required fields are missing.",
-            'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
-        }
+    if vm.error:
+        return vm.to_dict()
 
     # TODO: Create the user
-    user = user_service.create_user(name, email, password)
+    user = user_service.create_user(vm.name, vm.email, vm.password)
     if not user:
-        return {
-            'name': name,
-            'email': email,
-            'password': password,
-            'error': "A user with that email already exists.",
-            'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
-        }
+        return vm.to_dict()
 
     # TODO: Log in browser as a session
     resp = flask.redirect('/account')
