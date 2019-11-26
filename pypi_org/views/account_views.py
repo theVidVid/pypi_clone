@@ -5,6 +5,7 @@ from pypi_org.infrastructure.view_modifiers import response
 from pypi_org.services import user_service
 from pypi_org.infrastructure import cookie_auth
 from viewmodels.account.index_view_model import IndexViewModel
+from viewmodels.account.register_view_model import RegisterViewModel
 
 blueprint = flask.Blueprint('account', __name__, template_folder='templates')
 
@@ -33,11 +34,7 @@ def register_get():
 @blueprint.route('/account/register', methods=['POST'])
 @response(template_file='account/register.html')
 def register_post():
-    data = request_dict.create(default_val='')
-
-    name = data.name
-    email = data.email.lower().strip()
-    password = data.password.strip()
+    vm = RegisterViewModel()
 
     if not name or not email or not password:
         return {
