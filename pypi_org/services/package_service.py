@@ -11,7 +11,7 @@ def get_latest_releases(limit=10) -> List[Release]:
     releases = session.query(Release) \
         .options(sqlalchemy.orm.joinedload(Release.package)) \
         .order_by(Release.created_date.desc()) \
-        .limit(limit)\
+        .limit(limit) \
         .all()
 
     session.close()
