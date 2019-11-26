@@ -26,9 +26,8 @@ def index():
 @blueprint.route('/account/register', methods=['GET'])
 @response(template_file='account/register.html')
 def register_get():
-    return {
-        'user_id': cookie_auth.get_user_id_via_auth_cookie(flask.request),
-    }
+    vm = RegisterViewModel()
+    return vm.to_dict()
 
 
 @blueprint.route('/account/register', methods=['POST'])
@@ -43,6 +42,7 @@ def register_post():
     # TODO: Create the user
     user = user_service.create_user(vm.name, vm.email, vm.password)
     if not user:
+        vm.error = 'The account could not be created.'
         return vm.to_dict()
 
     # TODO: Log in browser as a session
