@@ -3,13 +3,13 @@ from typing import Optional
 import flask
 from flask import Request
 
-from infrastructure import request_dict, cookie_auth
+from pypi_org.infrastructure import request_dict, cookie_auth
 
 
 class ViewModelBase:
     def __init__(self):
         self.request: Request = flask.request
-        self.request_dict = request_dict.create(default_val='')
+        self.request_dict = request_dict.create('')
 
         self.error: Optional[str] = None
         self.user_id: Optional[int] = cookie_auth \
